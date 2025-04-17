@@ -7,30 +7,6 @@ import { PrismaClient } from "../generated/prisma";
 
 import { convertToPlainObject } from "../utils";
 
-// Get latest products
-
-// export async function getLatestProducts() {
-//   const prisma = new PrismaClient();
-//   const products = await prisma.product.findMany({
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//     take: LATEST_PRODUCTS_LIMIT,
-//   });
-//   return convertToPlainObject(products);
-// }
-// export async function getLatestProducts(): Promise<Product[]> {
-//   const prisma = new PrismaClient();
-//   const products = await prisma.product.findMany({
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//     take: LATEST_PRODUCTS_LIMIT,
-//   });
-//   return convertToPlainObject(products) as Product[];
-// }
-// get single product by it's slug
-
 export async function getLatestProducts(): Promise<Product[]> {
   const prisma = new PrismaClient();
   const products = await prisma.product.findMany({
