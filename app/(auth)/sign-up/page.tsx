@@ -9,13 +9,14 @@ import { APP_NAME } from "@/lib/constants";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import CredentialsSignInForm from "./credentials-signin-form";
+// import CredentialsSignInForm from "./credentials-signin-form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import SignUpForm from "./sign-up-form";
 
 export const metadata: Metadata = {
-  title: "Sign In",
-  description: "Sign in to your account",
+  title: "Sign Up",
+  description: "Sign Up to your account",
 };
 
 // Change the type so that searchParams is a Promise
@@ -23,7 +24,7 @@ interface SignInPageProps {
   searchParams: Promise<{ callbackUrl?: string }>;
 }
 
-export default async function SignInPage({ searchParams }: SignInPageProps) {
+export default async function SignUpPage({ searchParams }: SignInPageProps) {
   const { callbackUrl } = await searchParams; // await the promise
   const session = await auth();
 
@@ -45,13 +46,13 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
               priority={true}
             />
           </Link>
-          <CardTitle className="text-center">Sign In</CardTitle>
+          <CardTitle className="text-center">Create Account</CardTitle>
           <CardDescription className="text-center">
-            Sign in with your account
+            Enter your information below to create an account
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <CredentialsSignInForm />
+          <SignUpForm></SignUpForm>
         </CardContent>
       </Card>
     </div>
